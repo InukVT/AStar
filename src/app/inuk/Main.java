@@ -13,12 +13,12 @@ public class Main {
         Vertex C=new Vertex("C",4,0);
         Vertex D=new Vertex("D",3,7);
         Vertex E=new Vertex("E",3,3);
-        Vertex F=new Vertex("F",6,6;
+        Vertex F=new Vertex("F",6,6);
         Vertex G=new Vertex("G",7,2);
         Vertex H=new Vertex("H",8,7);
         Vertex I=new Vertex("I",9,2);
         Vertex J=new Vertex("J",11,5);
-        
+
 
         if(MyMaze.A_Star(A,J))
         {
