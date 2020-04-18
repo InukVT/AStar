@@ -35,16 +35,8 @@ public class AStarGraph {
         start.setg(0.0);
         start.calculatef();
         //Start algorithm
-        Openlist.add(start); // not sure if this works -Kaiyin
-        Closedlist = empty;
-        Current=null;
-        while(!Openlist.isEmpty()) {
-            Current = 
-        }
-
         System.out.println("Start Algorithm");
         //Implement the Astar algorithm
-        Openlist.add();
         return false;
     }
     public Double Manhattan(Vertex from,Vertex goal){
