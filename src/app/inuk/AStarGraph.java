@@ -37,6 +37,35 @@ public class AStarGraph {
         //Start algorithm
         System.out.println("Start Algorithm");
         //Implement the Astar algorithm
+        while (!Openlist.isEmpty())
+        {
+            Current = Openlist.remove();  // This should get changed
+
+            if(Current == destination)
+            {
+                return true;
+            }
+
+            Closedlist.add(Current);
+
+            CurrentNeighbors = Current.getNeighbours();
+
+            for ( int i=0;
+                  i<CurrentNeighbors.size();
+                  i++ )
+            {
+                Neighbor = CurrentNeighbors.get(i); // implement weight ( current, v )
+                Double tempGOfV = Current.getg() ;
+
+                if ( tempGOfV < Neighbor.getg() )
+                {
+                    // implement
+                }
+
+                // implement
+            }
+        }
+
         return false;
     }
     public Double Manhattan(Vertex from,Vertex goal){
