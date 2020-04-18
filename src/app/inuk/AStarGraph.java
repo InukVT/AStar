@@ -1,3 +1,5 @@
+package app.inuk;
+
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
