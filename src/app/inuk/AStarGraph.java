@@ -3,6 +3,9 @@ package app.inuk;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
+import static java.lang.StrictMath.abs;
+import static java.lang.StrictMath.sqrt;
+
 public class AStarGraph {
     private ArrayList<Vertex> vertices;
     public AStarGraph() {
@@ -37,12 +40,22 @@ public class AStarGraph {
         return false;
     }
     public Double Manhattan(Vertex from,Vertex goal){
-        //Implement this
-        return 0.0;
+        // Take the distance of the different positions
+        double distX = abs ( from.getx() - goal.getx() );
+        double distY = abs ( from.gety() - goal.gety() );
+
+        return distX + distY;
     }
     public Double Euclidean( Vertex from,Vertex to){
-        //Implement this
-        return 0.0;
+        // Get the distance between positions
+        double distX = abs ( from.getx() - to.getx() );
+        double distY = abs ( from.gety() - to.gety() );
+
+        // Calculate the square of the distance ( pythagoras )
+        double sqrtDist = ( distX*distX ) + ( distY*distY ) ;
+
+        // Return squareroot, alas the last part of pythagoras
+        return sqrt(sqrtDist);
     }
 }
 
