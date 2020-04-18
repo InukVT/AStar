@@ -29,6 +29,19 @@ public class Main {
         MyMaze.addvertex(I);
         MyMaze.addvertex(J);
 
+        MyMaze.newconnection(A, B, 3.41);
+        MyMaze.newconnection(A, C, 6.82);
+        MyMaze.newconnection(B, D, 2.0);
+        MyMaze.newconnection(C, G, 4.41);
+        MyMaze.newconnection(C, I, 4.82);
+        MyMaze.newconnection(D, E, 4.0);
+        MyMaze.newconnection(E, F, 6.23);
+        MyMaze.newconnection(F, G, 4.41);
+        MyMaze.newconnection(F, H, 3.82);
+        MyMaze.newconnection(G, H, 5.41);
+        MyMaze.newconnection(G, I, 2.82);
+        MyMaze.newconnection(H, J, 4.41);
+        MyMaze.newconnection(I, J, 3.82);
 
         if(MyMaze.A_Star(A,J))
         {
