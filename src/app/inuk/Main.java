@@ -18,6 +18,16 @@ public class Main {
         Vertex H=new Vertex("H",8,7);
         Vertex I=new Vertex("I",9,2);
         Vertex J=new Vertex("J",11,5);
+        MyMaze.addvertex(A);
+        MyMaze.addvertex(B);
+        MyMaze.addvertex(C);
+        MyMaze.addvertex(D);
+        MyMaze.addvertex(E);
+        MyMaze.addvertex(F);
+        MyMaze.addvertex(G);
+        MyMaze.addvertex(H);
+        MyMaze.addvertex(I);
+        MyMaze.addvertex(J);
 
 
         if(MyMaze.A_Star(A,J))
