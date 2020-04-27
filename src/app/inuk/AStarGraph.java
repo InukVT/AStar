@@ -37,9 +37,10 @@ public class AStarGraph {
         //Start algorithm
         System.out.println("Start Algorithm");
         //Implement the Astar algorithm
+
         while (!Openlist.isEmpty())
         {
-            Current = Openlist.remove();  // This should get changed
+            Current = Openlist.remove();
 
             if(Current == destination)
             {
@@ -54,12 +55,22 @@ public class AStarGraph {
                   i<CurrentNeighbors.size();
                   i++ )
             {
-                Neighbor = CurrentNeighbors.get(i); // implement weight ( current, v )
-                Double tempGOfV = Current.getg() ;
+                Neighbor = CurrentNeighbors.get(i);
+                Double tempGOfV = Euclidean( Current, Neighbor) ; // implement weight ( current, v )  (I think it's euclidean?
 
                 if ( tempGOfV < Neighbor.getg() )
                 {
                     // implement
+                    Neighbor.setPrev(Current);
+
+                    Neighbor.setg(tempGOfV);
+
+                    Neighbor.calculatef();
+
+                    if (!Closedlist.contains(Neighbor) && Openlist.contains(Neighbor) )
+                    {
+                        Openlist.add(Neighbor);
+                    }
                 }
 
                 // implement
@@ -68,6 +79,7 @@ public class AStarGraph {
 
         return false;
     }
+
     public Double Manhattan(Vertex from,Vertex goal){
         // Take the distance of the different positions
         double distX = abs ( from.getx() - goal.getx() );
@@ -75,6 +87,7 @@ public class AStarGraph {
 
         return distX + distY;
     }
+
     public Double Euclidean( Vertex from,Vertex to){
         // Get the distance between positions
         double distX = abs ( from.getx() - to.getx() );
@@ -134,8 +147,6 @@ class Vertex implements Comparable<Vertex>{
     }
     @Override
     public int compareTo(Vertex o) {
-//Implement this
-//
-        return 0;
+        return getf().compareTo(o.getf());
    }
 }
