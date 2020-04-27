@@ -18,7 +18,7 @@ public class AStarGraph {
         v1.addOutEdge(v2,dist);
         v2.addOutEdge(v1,dist);
     }
-    public boolean A_Star(Vertex start, Vertex destination, boolean euclidean)
+    public boolean A_Star(Vertex start, Vertex destination, Heuristics heuristics)
     {   if (start==null || destination==null)
           return false;
         PriorityQueue<Vertex> Openlist = new PriorityQueue<Vertex>();
@@ -30,11 +30,14 @@ public class AStarGraph {
         //Initialize h with chosen heuristic
         for (int i =0; i<vertices.size();i++)
         {
-            if(euclidean)
+            switch (heuristics)
             {
-                vertices.get(1).seth(Euclidean(vertices.get(i),destination));
-            } else {
-                vertices.get(i).seth(Manhattan(vertices.get(i), destination));
+                case Euclidean:
+                    vertices.get(1).seth(Euclidean(vertices.get(i),destination));
+                    break;
+                case Manhattan:
+                    vertices.get(i).seth(Manhattan(vertices.get(i), destination));
+                    break;
             }
         }
         start.setg(0.0);
