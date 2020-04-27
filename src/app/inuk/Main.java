@@ -48,7 +48,7 @@ public class Main {
         MyMaze.newconnection(H, J, 4.41);
         MyMaze.newconnection(I, J, 3.82);
 
-        if(MyMaze.A_Star(A,J))
+        if(MyMaze.A_Star(A,J, true))
         {
             System.out.println("Found a path");
             Vertex pvertex=J;
