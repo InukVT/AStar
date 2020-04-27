@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import javax.print.attribute.standard.Destination;
@@ -24,6 +25,9 @@ public class Controller {
 
     @FXML
     private Button printPath;
+
+    @FXML
+    private TextArea textArea;
 
     public void placeHolder(){
         heuristics.getItems().setAll(Heuristics.values());
