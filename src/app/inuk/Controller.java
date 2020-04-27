@@ -1,6 +1,7 @@
 package app.inuk;
 import java.util.Stack;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,7 +27,7 @@ public class Controller {
 
     public void placeHolder(){
         heuristics.getItems().setAll(Heuristics.values());
-        startVertex.setItems(AStarGraph.);
+        startVertex.setItems(FXCollections.observableArrayList(Main.MyMaze.getVertices()));
         //printPath.setOnAction(e -> );
     }
     @FXML
