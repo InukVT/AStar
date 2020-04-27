@@ -1,10 +1,15 @@
 package app.inuk;
 
 import java.util.Stack;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(Stage primaryStage) throws Exception {
         AStarGraph MyMaze = new AStarGraph();
         // Make the graph provided to you in the diagram and table
         //The vertices must be constructed like A
