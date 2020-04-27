@@ -167,4 +167,10 @@ class Vertex implements Comparable<Vertex>{
         o.calculatef();
         return getf().compareTo(o.getf());
    }
+
+   @Override
+    public String toString()
+   {
+       return this.id;
+   }
 }
