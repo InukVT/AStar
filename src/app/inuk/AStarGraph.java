@@ -111,6 +111,10 @@ public class AStarGraph {
         // Return squareroot, alas the last part of pythagoras
         return sqrt(sqrtDist);
     }
+
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
 }
 
 class Vertex implements Comparable<Vertex>{
