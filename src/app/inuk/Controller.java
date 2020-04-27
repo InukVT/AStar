@@ -21,4 +21,8 @@ public class Controller {
 
     @FXML
     private Button printPath;
+
+    public void placeHolder(){
+        printPath.setOnAction(e -> );
+    }
 }
