@@ -30,6 +30,7 @@ public class AStarGraph {
         //Initialize h with chosen heuristic
         for (int i =0; i<vertices.size();i++)
         {
+            vertices.get(i).reset();
             switch (heuristics)
             {
                 case Euclidean:
@@ -173,4 +174,10 @@ class Vertex implements Comparable<Vertex>{
    {
        return this.id;
    }
+
+    public void reset() {
+        f=Double.POSITIVE_INFINITY;
+        g=Double.POSITIVE_INFINITY;
+        prev = null;
+    }
 }
