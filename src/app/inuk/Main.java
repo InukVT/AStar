@@ -7,22 +7,29 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application{
+    public void start(Stage primaryStage) throws Exception {
+        generateVertex();
+        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        primaryStage.setTitle("A-star");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
+    }
 
-    public static void main(Stage primaryStage) throws Exception {
+    public void generateVertex()  {
         AStarGraph MyMaze = new AStarGraph();
         // Make the graph provided to you in the diagram and table
         //The vertices must be constructed like A
-        Vertex A=new Vertex("A",0,4);
-        Vertex B=new Vertex("B",1,7);
-        Vertex C=new Vertex("C",4,0);
-        Vertex D=new Vertex("D",3,7);
-        Vertex E=new Vertex("E",3,3);
-        Vertex F=new Vertex("F",6,6);
-        Vertex G=new Vertex("G",7,2);
-        Vertex H=new Vertex("H",8,7);
-        Vertex I=new Vertex("I",9,2);
-        Vertex J=new Vertex("J",11,5);
+        Vertex A = new Vertex("A", 0, 4);
+        Vertex B = new Vertex("B", 1, 7);
+        Vertex C = new Vertex("C", 4, 0);
+        Vertex D = new Vertex("D", 3, 7);
+        Vertex E = new Vertex("E", 3, 3);
+        Vertex F = new Vertex("F", 6, 6);
+        Vertex G = new Vertex("G", 7, 2);
+        Vertex H = new Vertex("H", 8, 7);
+        Vertex I = new Vertex("I", 9, 2);
+        Vertex J = new Vertex("J", 11, 5);
         MyMaze.addvertex(A);
         MyMaze.addvertex(B);
         MyMaze.addvertex(C);
@@ -48,22 +55,20 @@ public class Main {
         MyMaze.newconnection(H, J, 4.41);
         MyMaze.newconnection(I, J, 3.82);
 
-        if(MyMaze.A_Star(A,J, true))
-        {
+        if (MyMaze.A_Star(A, J, true)) {
             System.out.println("Found a path");
-            Vertex pvertex=J;
+            Vertex pvertex = J;
             Stack<Vertex> Path = new Stack<>();
-            int limit=0;
-            while (pvertex!=null)
-            {
+            int limit = 0;
+            while (pvertex != null) {
                 Path.push(pvertex);
-                pvertex=pvertex.getPrev();
+                pvertex = pvertex.getPrev();
             }
-            if(!Path.isEmpty())
-                 limit =Path.size();
-            for(int i=0;i<limit-1;i++)
-                System.out.print(Path.pop().getid() +" - > ");
-            if (limit>0)
+            if (!Path.isEmpty())
+                limit = Path.size();
+            for (int i = 0; i < limit - 1; i++)
+                System.out.print(Path.pop().getid() + " - > ");
+            if (limit > 0)
                 System.out.println(Path.pop().getid());
 
         }
