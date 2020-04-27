@@ -56,7 +56,7 @@ public class Controller {
         System.out.println("by " + heuristics.getValue());
         String path = aStar(startVertex.getValue(), destination.getValue(), heuristics.getValue());
         System.out.println(path);
-        textArea.setText(path);
+        textArea.setText(path + "by " + heuristics.getValue());
     }
 
     private String aStar(Vertex from, Vertex to, Heuristics heuristics)
