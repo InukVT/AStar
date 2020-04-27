@@ -28,6 +28,7 @@ public class Controller {
     public void placeHolder(){
         heuristics.getItems().setAll(Heuristics.values());
         startVertex.setItems(FXCollections.observableArrayList(Main.MyMaze.getVertices()));
+        destination.setItems(FXCollections.observableArrayList(Main.MyMaze.getVertices()));
         //printPath.setOnAction(e -> );
     }
     @FXML
