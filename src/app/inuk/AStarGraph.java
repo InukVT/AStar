@@ -18,7 +18,7 @@ public class AStarGraph {
         v1.addOutEdge(v2,dist);
         v2.addOutEdge(v1,dist);
     }
-    public boolean A_Star(Vertex start, Vertex destination)
+    public boolean A_Star(Vertex start, Vertex destination, boolean euclidean)
     {   if (start==null || destination==null)
           return false;
         PriorityQueue<Vertex> Openlist = new PriorityQueue<Vertex>();
@@ -30,7 +30,12 @@ public class AStarGraph {
         //Initialize h with chosen heuristic
         for (int i =0; i<vertices.size();i++)
         {
-            vertices.get(i).seth(Manhattan(vertices.get(i),destination));
+            if(euclidean)
+            {
+                vertices.get(1).seth(Euclidean(vertices.get(i),destination));
+            } else {
+                vertices.get(i).seth(Manhattan(vertices.get(i), destination));
+            }
         }
         start.setg(0.0);
         start.calculatef();
@@ -56,7 +61,7 @@ public class AStarGraph {
                   i++ )
             {
                 Neighbor = CurrentNeighbors.get(i);
-                Double tempGOfV = Euclidean( Current, Neighbor) ; // implement weight ( current, v )  (I think it's euclidean?
+                Double tempGOfV = Current.getg() + Current.getNeighbourDistance().get(i) ; // implement weight ( current, v )  (I think it's euclidean?
 
                 if ( tempGOfV < Neighbor.getg() )
                 {
@@ -67,9 +72,13 @@ public class AStarGraph {
 
                     Neighbor.calculatef();
 
-                    if (!Closedlist.contains(Neighbor) && Openlist.contains(Neighbor) )
+                    if (!Closedlist.contains(Neighbor) && !Openlist.contains(Neighbor) )
                     {
-                        Openlist.add(Neighbor);
+                        Openlist.offer(Neighbor);
+                    } else if ( Openlist.contains(Neighbor) )
+                    {
+                        Openlist.remove(Neighbor);
+                        Openlist.offer(Neighbor);
                     }
                 }
 
@@ -147,6 +156,8 @@ class Vertex implements Comparable<Vertex>{
     }
     @Override
     public int compareTo(Vertex o) {
+        calculatef();
+        o.calculatef();
         return getf().compareTo(o.getf());
    }
 }
