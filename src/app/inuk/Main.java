@@ -16,7 +16,8 @@ public class Main extends Application{
         primaryStage.show();
     }
     public static AStarGraph MyMaze;
-    public void generateVertex()  {
+
+    void generateVertex()  {
         MyMaze = new AStarGraph();
         // Make the graph provided to you in the diagram and table
         //The vertices must be constructed like A
@@ -54,26 +55,6 @@ public class Main extends Application{
         MyMaze.newconnection(G, I, 2.82);
         MyMaze.newconnection(H, J, 4.41);
         MyMaze.newconnection(I, J, 3.82);
-
-        if (MyMaze.A_Star(A, J, Heuristics.Manhattan)) {
-            System.out.println("Found a path");
-            Vertex pvertex = J;
-            Stack<Vertex> Path = new Stack<>();
-            int limit = 0;
-            while (pvertex != null) {
-                Path.push(pvertex);
-                pvertex = pvertex.getPrev();
-            }
-            if (!Path.isEmpty())
-                limit = Path.size();
-            for (int i = 0; i < limit - 1; i++)
-                System.out.print(Path.pop().getid() + " - > ");
-            if (limit > 0)
-                System.out.println(Path.pop().getid());
-
-        }
-        else
-            System.out.println("DID NOT FIND A PATH!!");
 
     }
 }

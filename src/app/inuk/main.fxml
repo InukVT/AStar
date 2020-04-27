@@ -15,7 +15,7 @@
       <Label layoutX="34.0" layoutY="48.0" text="Select Start" />
       <Label layoutX="34.0" layoutY="204.0" text="Select Heuristic" />
       <Button fx:id="printPath" layoutX="146.0" layoutY="267.0" mnemonicParsing="false" text="Print Shortest path" />
-      <TextArea layoutX="351.0" layoutY="179.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="textArea" layoutX="351.0" layoutY="179.0" prefHeight="200.0" prefWidth="200.0" />
       <Label layoutX="32.0" layoutY="137.0" text="Select Destination" />
    </children>
 </AnchorPane>
