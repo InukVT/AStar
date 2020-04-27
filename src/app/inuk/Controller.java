@@ -36,21 +36,24 @@ public class Controller {
 
         heuristics.getItems().setAll(Heuristics.values());
         heuristics.setValue(Heuristics.Euclidean);
-        heuristics.setOnAction(e -> action(e));
+        //heuristics.setOnAction(e -> action(e));
 
         startVertex.setItems(FXCollections.observableArrayList(MyMaze.getVertices()));
         startVertex.setValue(MyMaze.getVertices().get(0));
-        startVertex.setOnAction(e -> action(e));
+        //startVertex.setOnAction(e -> action(e));
 
         destination.setItems(FXCollections.observableArrayList(MyMaze.getVertices()));
         destination.setValue(MyMaze.getVertices().get(0));
-        destination.setOnAction(e -> action(e));
+        //destination.setOnAction(e -> action(e));
+
+        printPath.setOnAction(e -> action(e));
     }
 
     private void action(ActionEvent e)
     {
         System.out.println("Start is " + startVertex.getValue());
         System.out.println("Destination is "+ destination.getValue());
+        System.out.println("by " + heuristics.getValue());
         String path = aStar(startVertex.getValue(), destination.getValue(), heuristics.getValue());
         System.out.println(path);
         textArea.setText(path);
