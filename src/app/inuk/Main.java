@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
     public void start(Stage primaryStage) throws Exception {
+        // Initialise the JFX window
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         primaryStage.setTitle("A-star");
         primaryStage.setScene(new Scene(root, 600, 400));

@@ -30,6 +30,10 @@ public class Controller {
     @FXML
     private TextArea textArea;
 
+    // Initialise the views.
+    // Default value to minimise need of null checking.
+    // Commented out setOnActions, uncomment these if you want stuff to happen
+    // as soon as you update their values.
     @FXML
     public void initialize(){
         generateVertex();
@@ -49,6 +53,7 @@ public class Controller {
         printPath.setOnAction(e -> action(e));
     }
 
+    // Print out the found path, with STD out debug values.
     private void action(ActionEvent e)
     {
         System.out.println("Start is " + startVertex.getValue());
@@ -61,21 +66,27 @@ public class Controller {
 
     private String aStar(Vertex from, Vertex to, Heuristics heuristics)
     {
+        // This string is the path found
         String path = "";
-            if (MyMaze.A_Star(from, to, heuristics)) {
-                path += "Found a path\n";
-                Vertex pvertex = to;
-                Stack<Vertex> Path = new Stack<>();
-            int limit = 0;
+        // Check to see if a path is even found
+        if (MyMaze.A_Star(from, to, heuristics)) {
+            path += "Found a path\n";
+            Vertex pvertex = to;
+            Stack<Vertex> Path = new Stack<>();
+            // Take the path found in AStar and turn it to a Path usable here
+            // This path is in reverse order compared to the path in AStar,
+            // as the AStar path goes from end node to start node.
             while (pvertex != null) {
                 Path.push(pvertex);
                 pvertex = pvertex.getPrev();
             }
             while (!Path.isEmpty()) {
+                // Print the node
                 path += Path.pop();
+                // If this is not the last part of the path, then print an arrow
                 if (Path.size() > 0 )
                 {
-                    path += " - > ";
+                  path += " - > ";
                 }
             }
         } else {

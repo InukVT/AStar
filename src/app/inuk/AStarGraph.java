@@ -30,6 +30,7 @@ public class AStarGraph {
         //Initialize h with chosen heuristic
         for (int i =0; i<vertices.size();i++)
         {
+            // Reset the vertices changed values from last AStar
             vertices.get(i).reset();
             switch (heuristics)
             {
@@ -49,47 +50,59 @@ public class AStarGraph {
 
         while (!Openlist.isEmpty())
         {
+            // Take the topmost Vertex in cue and work on the
             Current = Openlist.remove();
 
+            // Return true, because the destination was found
             if(Current == destination)
             {
                 return true;
             }
 
+            // Current has now been checked,
+            // add it to the corresponding list.
             Closedlist.add(Current);
 
             CurrentNeighbors = Current.getNeighbours();
 
+            // Check to see if we can get closer to end
             for ( int i=0;
                   i<CurrentNeighbors.size();
                   i++ )
             {
                 Neighbor = CurrentNeighbors.get(i);
-                Double tempGOfV = Current.getg() + Current.getNeighbourDistance().get(i) ; // implement weight ( current, v )  (I think it's euclidean?
+                // Check to see if this vertix is closer than earlier calcualted
+                Double tempGOfV = Current.getg() + Current.getNeighbourDistance().get(i) ;
 
+                // Out of the neighbors, find the one with lowest G
                 if ( tempGOfV < Neighbor.getg() )
                 {
-                    // implement
+                    // This will eventually be the path
                     Neighbor.setPrev(Current);
 
+                    // because it is closer than earlier,
+                    // update vertex to reflect this
                     Neighbor.setg(tempGOfV);
 
+                    // For good measure, update F to reflect g chance
                     Neighbor.calculatef();
 
                     if (!Closedlist.contains(Neighbor) && !Openlist.contains(Neighbor) )
                     {
+                        // Add neighbor to openlist
                         Openlist.offer(Neighbor);
                     } else if ( Openlist.contains(Neighbor) )
                     {
+                        // Update position in openlist
                         Openlist.remove(Neighbor);
                         Openlist.offer(Neighbor);
                     }
                 }
-
-                // implement
             }
         }
-
+        // Because openlist has its head removed everytime,
+        // and the loop goes as long as openlist is populated,
+        // this return will be hit if no route could be found
         return false;
     }
 
@@ -164,11 +177,13 @@ class Vertex implements Comparable<Vertex>{
     }
     @Override
     public int compareTo(Vertex o) {
+        // To sort the vertex in PriorityQueue, we need to have a reference. This sorts the Queue with F
         calculatef();
         o.calculatef();
         return getf().compareTo(o.getf());
    }
 
+   // Custom string because .getid() got used a lot.
    @Override
     public String toString()
    {
@@ -176,6 +191,8 @@ class Vertex implements Comparable<Vertex>{
    }
 
     public void reset() {
+        // Before the AStar alg has to run, it's a good idea to
+        // reset all values from previous AStar run
         f=Double.POSITIVE_INFINITY;
         g=Double.POSITIVE_INFINITY;
         prev = null;
